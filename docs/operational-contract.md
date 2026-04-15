@@ -60,3 +60,4 @@ Uazapi externa
 - nenhum apply implícito
 - dashboard Traefik e Portainer sempre atrás de auth
 - `excludeMessages: ["wasSentByApi"]` é obrigatório na integração Uazapi
+- a primeira emissão TLS deve acontecer com os registros críticos em **DNS only** apontando para a VM, para o desafio HTTP do Let's Encrypt funcionar sem ambiguidade

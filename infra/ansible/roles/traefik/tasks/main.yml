@@ -1,4 +1,10 @@
 ---
+- name: Garantir storage do ACME do Traefik
+  ansible.builtin.file:
+    path: "{{ shipyard_data_dir }}/traefik/acme.json"
+    state: touch
+    mode: "0600"
+
 - name: Renderizar configuração estática do Traefik
   ansible.builtin.template:
     src: traefik.yml.j2

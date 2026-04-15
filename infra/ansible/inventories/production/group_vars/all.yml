@@ -4,6 +4,7 @@ shipyard_expected_debian_major_version: "11"
 shipyard_compose_autostart: false
 shipyard_admin_user: diego
 shipyard_timezone: America/Sao_Paulo
+shipyard_tls_acme_email: ruptur.cloud@gmail.com
 
 shipyard_base_dir: /opt/ruptur
 shipyard_compose_dir: "{{ shipyard_base_dir }}/compose"

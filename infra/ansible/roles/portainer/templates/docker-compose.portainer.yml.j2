@@ -13,7 +13,9 @@ services:
     labels:
       traefik.enable: "true"
       traefik.http.routers.portainer.rule: Host(`{{ shipyard_domains.portainer }}`)
-      traefik.http.routers.portainer.entrypoints: web
+      traefik.http.routers.portainer.entrypoints: websecure
+      traefik.http.routers.portainer.tls: "true"
+      traefik.http.routers.portainer.tls.certresolver: letsencrypt
       traefik.http.services.portainer.loadbalancer.server.port: "9000"
 
 networks:

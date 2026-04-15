@@ -57,3 +57,9 @@ bash scripts/validate.sh --terraform-init
 - não aplica DNS no Cloudflare
 - não sobe containers no host remoto
 - não injeta segredos reais
+
+## Observação de borda/TLS
+
+- na primeira entrada pública, use `n8n.ruptur.cloud`, `portainer.ruptur.cloud` e `traefik.ruptur.cloud` em **DNS only**
+- o Traefik desta fase usa `Let's Encrypt` via `httpChallenge` na porta `80`
+- depois da emissão inicial do certificado, a política de proxy do Cloudflare pode ser revista
