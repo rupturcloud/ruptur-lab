@@ -47,3 +47,18 @@
     groups: docker
     append: true
   when: shipyard_admin_user | length > 0
+
+- name: Garantir diretório de override do systemd para o Docker
+  ansible.builtin.file:
+    path: /etc/systemd/system/docker.service.d
+    state: directory
+    mode: "0755"
+
+- name: Configurar workaround de API mínima do Docker para clientes legados
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/docker.service.d/10-min-api-version.conf
+    mode: "0644"
+    content: |
+      [Service]
+      Environment="DOCKER_MIN_API_VERSION={{ docker_min_api_version }}"
+  notify: Reiniciar Docker

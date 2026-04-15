@@ -14,3 +14,9 @@ shipyard_dirs_directories:
   - "{{ shipyard_data_dir }}/redis"
   - "{{ shipyard_data_dir }}/n8n"
   - "{{ shipyard_data_dir }}/minio"
+
+shipyard_dirs_ownerships:
+  - path: "{{ shipyard_data_dir }}/n8n"
+    owner: "1000"
+    group: "1000"
+    mode: "0755"

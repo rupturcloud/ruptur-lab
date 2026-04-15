@@ -6,6 +6,15 @@
     mode: "0755"
   loop: "{{ shipyard_dirs_directories }}"
 
+- name: Garantir ownerships específicos do runtime
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    state: directory
+    owner: "{{ item.owner }}"
+    group: "{{ item.group }}"
+    mode: "{{ item.mode }}"
+  loop: "{{ shipyard_dirs_ownerships }}"
+
 - name: Garantir redes Docker compartilhadas do estaleiro
   community.docker.docker_network:
     name: "{{ item }}"
