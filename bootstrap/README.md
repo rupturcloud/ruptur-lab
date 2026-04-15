@@ -1,3 +1,6 @@
 # Bootstrap
 
-Materiais de bootstrap e integração com o catálogo Orion, sempre de forma seletiva e controlada.
+Materiais de bootstrap do estaleiro.
+
+- `orion-bootstrap-policy.md` define o uso seletivo do catálogo Orion
+- `claude-code-operator-brief.md` fixa o papel operacional do engenheiro principal

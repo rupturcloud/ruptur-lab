@@ -1,0 +1,12 @@
+---
+- name: Renderizar compose do n8n
+  ansible.builtin.template:
+    src: docker-compose.n8n.yml.j2
+    dest: "{{ n8n_compose_file }}"
+    mode: "0644"
+
+- name: Subir n8n quando autostart estiver habilitado
+  ansible.builtin.command:
+    cmd: docker compose -f {{ n8n_compose_file }} up -d
+  changed_when: shipyard_compose_autostart | bool
+  when: shipyard_compose_autostart | bool

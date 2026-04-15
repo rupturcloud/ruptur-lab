@@ -1,0 +1,13 @@
+project_id         = "midyear-forest-493400-s3"
+region             = "southamerica-east1"
+zone               = "southamerica-east1-b"
+network_name       = "ruptur-shipyard-vpc"
+subnetwork_name    = "ruptur-shipyard-subnet"
+subnetwork_cidr    = "10.42.0.0/24"
+vm_name            = "ruptur-shipyard-01"
+machine_type       = "n4-standard-4"
+boot_disk_type     = "pd-ssd"
+boot_disk_size_gb  = 250
+ssh_login_user     = "diego"
+ssh_source_ranges  = ["REPLACE_WITH_TRUSTED_IP_OR_CIDR/32"]
+ssh_public_keys    = ["ssh-ed25519 REPLACE_WITH_PUBLIC_KEY diego@local"]

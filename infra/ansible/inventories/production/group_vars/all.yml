@@ -1,0 +1,42 @@
+shipyard_project_name: ruptur-lab
+shipyard_environment: lab
+shipyard_expected_debian_major_version: "11"
+shipyard_compose_autostart: false
+shipyard_admin_user: diego
+shipyard_timezone: America/Sao_Paulo
+
+shipyard_base_dir: /opt/ruptur
+shipyard_compose_dir: "{{ shipyard_base_dir }}/compose"
+shipyard_config_dir: "{{ shipyard_base_dir }}/config"
+shipyard_data_dir: "{{ shipyard_base_dir }}/data"
+shipyard_logs_dir: "{{ shipyard_base_dir }}/logs"
+shipyard_runtime_dir: "{{ shipyard_base_dir }}/runtime"
+shipyard_backup_dir: "{{ shipyard_base_dir }}/backups"
+
+shipyard_external_networks:
+  - ruptur-edge
+  - ruptur-data
+
+shipyard_domains:
+  ops: ops.ruptur.cloud
+  api: api.ruptur.cloud
+  hermes: hermes.ruptur.cloud
+  n8n: n8n.ruptur.cloud
+  portainer: portainer.ruptur.cloud
+  traefik: traefik.ruptur.cloud
+
+shipyard_uazapi_events:
+  - messages
+  - connection
+shipyard_uazapi_optional_events:
+  - messages_update
+shipyard_uazapi_exclude_messages:
+  - wasSentByApi
+
+shipyard_images:
+  traefik: traefik:v3.1
+  portainer: portainer/portainer-ce:lts
+  postgres: postgres:16
+  redis: redis:7
+  n8n: docker.n8n.io/n8nio/n8n:1
+  minio: minio/minio:latest

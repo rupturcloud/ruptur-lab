@@ -1,0 +1,12 @@
+---
+- name: Renderizar compose do Postgres
+  ansible.builtin.template:
+    src: docker-compose.postgres.yml.j2
+    dest: "{{ postgres_compose_file }}"
+    mode: "0644"
+
+- name: Subir Postgres quando autostart estiver habilitado
+  ansible.builtin.command:
+    cmd: docker compose -f {{ postgres_compose_file }} up -d
+  changed_when: shipyard_compose_autostart | bool
+  when: shipyard_compose_autostart | bool

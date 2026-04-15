@@ -1,0 +1,31 @@
+---
+- name: Preparar o host do estaleiro Ruptur
+  hosts: shipyard
+  gather_facts: true
+  become: true
+
+  pre_tasks:
+    - name: Validar família do sistema operacional
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.os_family == "Debian"
+        fail_msg: "Este playbook assume hosts da família Debian."
+
+    - name: Validar versão major esperada do Debian
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.distribution_major_version == shipyard_expected_debian_major_version
+        fail_msg: >-
+          Host fora do baseline desta fase. Esperado Debian {{ shipyard_expected_debian_major_version }},
+          encontrado {{ ansible_facts.distribution_major_version }}.
+
+  roles:
+    - role: base
+    - role: docker
+    - role: shipyard_dirs
+    - role: traefik
+    - role: portainer
+    - role: postgres
+    - role: redis
+    - role: n8n
+    - role: minio
