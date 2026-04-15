@@ -17,13 +17,15 @@ Este repositório concentra a fundação técnica do estaleiro:
 - projeto GCP: `midyear-forest-493400-s3`
 - região: `southamerica-east1`
 - zona padrão: `southamerica-east1-b`
-- VM principal: `n4-standard-4`
+- VM principal: `n2-standard-4`
 - disco: `250 GiB pd-ssd`
 - sistema operacional: `Debian 11`
 - borda/DNS: `Cloudflare`
 - integração WhatsApp: `Uazapi externa -> n8n`
 - runtime: `docker compose` em VM única
 - Hermes: **fora da fase 1**, apenas preparado/reservado
+
+> Observação operacional: o alvo inicial era N4, mas a execução real deste projeto em `southamerica-east1` precisou usar `n2-standard-4` porque a quota regional de N4 está em `0` no projeto atual.
 
 ## Estrutura
 
@@ -39,6 +41,7 @@ Este repositório concentra a fundação técnica do estaleiro:
 
 - `Terraform = cloud`, `Ansible = host/runtime`
 - nenhuma credencial real entra no Git
+- exemplos de segredos ficam fora de `group_vars` para evitar carga acidental pelo Ansible
 - nenhum `apply` é implícito neste repo
 - `Cloudflare` fica na borda, não no runtime interno
 - `Uazapi` permanece externa nesta fase

@@ -16,7 +16,7 @@ Cloudflare (DNS + borda)
   └── traefik.ruptur.cloud     -> Traefik dashboard
 
 GCP / southamerica-east1
-  └── VM única (Debian 11 / n4-standard-4 / 250 GiB pd-ssd)
+  └── VM única (Debian 11 / n2-standard-4 / 250 GiB pd-ssd)
       ├── Docker Engine
       ├── Traefik
       ├── Portainer
@@ -28,6 +28,10 @@ GCP / southamerica-east1
 Externo
   └── Uazapi (fora da VM) -> webhook -> n8n
 ```
+
+## Observação operacional
+
+O baseline efetivamente aplicado neste projeto ficou em `n2-standard-4` com `pd-ssd`, porque a quota regional de N4 em `southamerica-east1` está zerada para o projeto atual. A topologia e os contratos da fase 1 permanecem os mesmos.
 
 ## Fronteiras obrigatórias
 

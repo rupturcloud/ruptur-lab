@@ -54,7 +54,7 @@ variable "vm_name" {
 variable "machine_type" {
   description = "Machine type da VM principal."
   type        = string
-  default     = "n4-standard-4"
+  default     = "n2-standard-4"
 }
 
 variable "boot_disk_type" {

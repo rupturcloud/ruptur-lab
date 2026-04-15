@@ -22,17 +22,20 @@ bash scripts/bootstrap-local.sh --best-effort
 2. `docs/operational-contract.md`
 3. `infra/terraform/terraform.tfvars.example`
 4. `infra/ansible/inventories/production/group_vars/all.yml`
-5. `infra/ansible/inventories/production/group_vars/secrets.example.yml`
+5. `infra/ansible/examples/production/secrets.example.yml`
 
 ## Passo 4 — preparar arquivos locais não versionados
 
 ```bash
 cp infra/terraform/backend.tf.example infra/terraform/backend.tf
 cp infra/terraform/terraform.tfvars.example infra/terraform/terraform.tfvars
-cp infra/ansible/inventories/production/group_vars/secrets.example.yml   infra/ansible/inventories/production/group_vars/secrets.yml
+cp infra/ansible/examples/production/secrets.example.yml \
+  infra/ansible/inventories/production/group_vars/secrets.yml
 ```
 
 > `backend.tf`, `terraform.tfvars` e `secrets.yml` ficam fora do Git.
+
+> No Ansible desta fase, `secrets.yml` é carregado explicitamente pelo playbook; não depende de autoload implícito do `group_vars`.
 
 ## Passo 5 — rodar validações estáticas
 

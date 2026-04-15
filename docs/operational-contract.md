@@ -28,7 +28,7 @@
 
 - **Infisical**: gestão humana/equipe/ambientes
 - **GCP Secret Manager**: execução/produção
-- **Ansible**: consome segredos já materializados fora do Git
+- **Ansible**: consome segredos já materializados fora do Git, via `inventories/production/group_vars/secrets.yml`
 
 ### Contrato mínimo de segredos
 
