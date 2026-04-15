@@ -52,4 +52,4 @@ shipyard_images:
   postgres: postgres:16
   redis: redis:7
   n8n: docker.n8n.io/n8nio/n8n:1
-  minio: minio/minio:latest
+  minio: minio/minio:RELEASE.2025-02-03T21-03-04Z-cpuv1
