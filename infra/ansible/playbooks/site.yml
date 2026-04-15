@@ -56,6 +56,35 @@
           ou injete overrides externos antes de subir o runtime.
       when: shipyard_compose_autostart | bool
 
+    - name: Validar contrato mínimo do Jarvis quando habilitado no autostart
+      ansible.builtin.assert:
+        that:
+          - shipyard_jarvis_uazapi_admin_token is not search('CHANGE_ME|PENDING_')
+          - shipyard_jarvis_uazapi_instance_token is not search('CHANGE_ME|PENDING_')
+          - shipyard_jarvis_allowed_user_ids | default('') | trim | length > 0
+          - >-
+            (
+              shipyard_jarvis_core_provider == 'ollama'
+            ) or (
+              shipyard_jarvis_core_provider == 'gemini' and
+              shipyard_jarvis_gemini_api_key is not search('CHANGE_ME|PENDING_')
+            ) or (
+              shipyard_jarvis_core_provider == 'openrouter' and
+              shipyard_jarvis_openrouter_api_key is not search('CHANGE_ME|PENDING_')
+            ) or (
+              shipyard_jarvis_core_provider == 'groq' and
+              shipyard_jarvis_groq_api_key is not search('CHANGE_ME|PENDING_')
+            ) or (
+              shipyard_jarvis_core_provider == 'deepseek' and
+              shipyard_jarvis_deepseek_api_key is not search('CHANGE_ME|PENDING_')
+            )
+        fail_msg: >-
+          O Jarvis foi habilitado, mas o contrato mínimo de operação ainda não
+          foi preenchido no arquivo local de segredos.
+      when:
+        - shipyard_compose_autostart | bool
+        - shipyard_jarvis_enabled | bool
+
   roles:
     - role: base
     - role: docker
@@ -66,3 +95,5 @@
     - role: redis
     - role: n8n
     - role: minio
+    - role: jarvis
+      when: shipyard_jarvis_enabled | bool

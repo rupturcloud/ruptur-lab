@@ -14,6 +14,10 @@ shipyard_dirs_directories:
   - "{{ shipyard_data_dir }}/redis"
   - "{{ shipyard_data_dir }}/n8n"
   - "{{ shipyard_data_dir }}/minio"
+  - "{{ shipyard_data_dir }}/jarvis"
+  - "{{ shipyard_config_dir }}/jarvis"
+  - "{{ shipyard_runtime_dir }}/jarvis"
+  - "{{ shipyard_runtime_dir }}/state"
 
 shipyard_dirs_ownerships:
   - path: "{{ shipyard_data_dir }}/n8n"

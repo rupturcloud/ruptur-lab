@@ -2,6 +2,7 @@ shipyard_project_name: ruptur-lab
 shipyard_environment: lab
 shipyard_expected_debian_major_version: "11"
 shipyard_compose_autostart: false
+shipyard_jarvis_enabled: false
 shipyard_admin_user: diego
 shipyard_timezone: America/Sao_Paulo
 shipyard_tls_acme_email: ruptur.cloud@gmail.com
@@ -33,6 +34,17 @@ shipyard_uazapi_optional_events:
   - messages_update
 shipyard_uazapi_exclude_messages:
   - wasSentByApi
+
+shipyard_jarvis_repo_url: https://github.com/tiatendeai/J.A.R.V.I.S.
+shipyard_jarvis_repo_version: main
+shipyard_jarvis_state_repo_url: https://github.com/tiatendeai/state.git
+shipyard_jarvis_state_repo_version: main
+shipyard_jarvis_core_provider: gemini
+shipyard_jarvis_router_provider: "{{ shipyard_jarvis_core_provider }}"
+shipyard_jarvis_ollama_base_url: http://host.docker.internal:11434/v1
+shipyard_jarvis_ollama_model: qwen3:4b
+shipyard_jarvis_port: 3000
+shipyard_jarvis_uazapi_base_url: https://api.uazapi.com
 
 shipyard_images:
   traefik: traefik:v3.1

@@ -24,6 +24,7 @@ Este repositório concentra a fundação técnica do estaleiro:
 - integração WhatsApp: `Uazapi externa -> n8n`
 - runtime: `docker compose` em VM única
 - Hermes: **fora da fase 1**, apenas preparado/reservado
+- operador canônico disponível para ativação posterior: `J.A.R.V.I.S.` em `ops.ruptur.cloud`
 
 > Observação operacional: o alvo inicial era N4, mas a execução real deste projeto em `southamerica-east1` precisou usar `n2-standard-4` porque a quota regional de N4 está em `0` no projeto atual.
 
@@ -67,3 +68,4 @@ bash scripts/bootstrap-local.sh --best-effort
 - `docs/bootstrap-runbook.md`
 - `bootstrap/orion-bootstrap-policy.md`
 - `bootstrap/claude-code-operator-brief.md`
+- `docs/jarvis-operator-path.md`
