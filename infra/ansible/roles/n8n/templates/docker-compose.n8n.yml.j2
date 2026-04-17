@@ -25,6 +25,7 @@ services:
       - data
     labels:
       traefik.enable: "true"
+      traefik.docker.network: "ruptur-edge"
       traefik.http.routers.n8n.rule: Host(`{{ shipyard_domains.n8n }}`)
       traefik.http.routers.n8n.entrypoints: websecure
       traefik.http.routers.n8n.tls: "true"
